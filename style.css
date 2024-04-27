@@ -8,6 +8,8 @@
 }
 
 :root {
+  --c-1: #fffdfd;
+  --c-2: #9f3647;
 }
 
 button,
@@ -18,7 +20,7 @@ button,
 h1,
 h2,
 p {
-  color: #fffdfd;
+  color: var(--c-1);
 }
 
 /* Estilos globales */
@@ -27,13 +29,14 @@ header {
   width: 100%;
   top: 0;
   position: sticky;
-  background-color: #9f3647;
-  color: #fffdfd;
+  background-color: var(--c-2);
+  color: var(--c-1);
   padding: 2rem 3.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  z-index: 1000;
 
   .logo {
     font-size: 1.2rem;
@@ -48,7 +51,7 @@ header {
 
     li a {
       text-decoration: none;
-      color: #fffdfd;
+      color: var(--c-1);
 
       &.btn-sign-in {
         padding: 0.8rem 1rem;
@@ -82,8 +85,8 @@ main {
     }
 
     button {
-      background-color: #9f3647;
-      color: #fffdfd;
+      background-color: var(--c-2);
+      color: var(--c-1);
       padding: 1rem 2rem;
       border: none;
       outline: none;
@@ -112,12 +115,11 @@ main {
       width: 70%;
       max-width: 650px;
 
-      
       label[for="search"] {
         width: 100%;
-        background-color: #fffdfd;
+        background-color: var(--c-1);
         border-radius: 9999px;
-        
+
         input#search {
           width: 100%;
           height: 100%;
@@ -128,11 +130,11 @@ main {
           font-size: 1rem;
         }
       }
-      
+
       button#searcher {
-        background-color: #9f3647;
-        color: #fffdfd;
-        border-color: #fffdfd;
+        background-color: var(--c-2);
+        color: var(--c-1);
+        border-color: var(--c-1);
         outline: none;
         border-radius: 99999px;
         border-width: 3px;
@@ -141,24 +143,92 @@ main {
         font-weight: bold;
       }
     }
-      
   }
 
   .trends-section {
     background-color: #181419;
 
+    .separator {
+      width: 80%;
+      margin: 0 auto;
+      border: 1px solid var(--c-2);
+    }
 
-     .separator {
-       width: 80%;
-       margin: 0 auto;
-       border: 2px solid #9f3647;
-     }
-
-     h2 {
+    h2 {
       font-size: 2.5rem;
       width: 100%;
       text-align: center;
       margin: 1rem 0 3rem 0;
-     }
+    }
+
+    section.cards-container {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 60px;
+
+      /* ESTILOS DEL CARD */
+
+      article.card {
+        width: 200px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+
+        a {
+          width: 100%;
+          position: inherit;
+
+          .img-container-card {
+            width: 100%;
+
+            .img-cover {
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .title-card {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            color: var(--c-1);
+            top: 50%;
+            z-index: 500;
+            transform: translateY(-50%);
+
+            h3 {
+              font-size: 1.6rem;
+              font-weight: bold;
+              opacity: 0;
+              letter-spacing: 0.1rem;
+              transition: opacity 0.5s ease-in-out;
+            }
+          }
+
+          &:hover {
+            box-shadow: 0 0 30px var(--c-2);
+            transform: scale(0.9);
+
+            .title-card {
+              width: 100%;
+              height: 100%;
+              backdrop-filter: blur(15px);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            h3 {
+              width: 100%;
+              padding: 0.5rem;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
   }
 }
