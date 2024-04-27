@@ -11,11 +11,18 @@ const options = {
 
 const getPopularMovies = async () => {
   const response = await fetch(`${API_SERVER}/movie/popular?page=2`, options);
-
   const data = await response.json();
-
   const movies = data.results;
   console.log(movies);
 };
 
-getPopularMovies()
+getPopularMovies();
+
+const getTopMovies = async () => {
+  const response = await fetch(`${API_SERVER}/movie/top_rated`, options);
+  const data = await response.json();
+  const movies = data.results;
+  console.log(movies);
+};
+
+getTopMovies();
